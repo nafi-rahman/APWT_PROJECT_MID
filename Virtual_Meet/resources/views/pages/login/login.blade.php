@@ -34,9 +34,9 @@
         <input type = "submit" class="btn btn-outline-light btn-lg px-5" value = "Login">
         <br>
         <br>
-        <p class="mb-0">Don't have an account? <a href="{{route('registration')}}" class="text-white-50 fw-bold">Sign Up</a></p>
+        <p class="mb-0" >Don't have an account? <a href="{{route('registration')}}" class=" fw-bold" id="link" ">Sign Up</a></p>
         <br><br>
-        <a href="{{ route('homeUser') }}">Continue as guest</a>
+        <a class=" fw-bold"  href="{{ route('homeUser') }}" id="link">Continue as guest</a>
 
 
 
