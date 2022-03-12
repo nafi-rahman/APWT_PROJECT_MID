@@ -12,7 +12,8 @@
         {{csrf_field()}}
         <div class ="col-md-4 form-group">
             <span>User Name</span>
-            <input type="text" name="userName" value = "{{old('userName')}}" class = "form-control">
+            <input type="text" name="userName" <?php if(isset($_COOKIE['remember'])) {echo $_COOKIE['remember'];} ?>
+            value = "<?php if(isset($_COOKIE['remember'])) {echo $_COOKIE['remember'];} ?>" placeholder= "User Name" class = "form-control">
             @error('userName')
                 <span class = "text-danger">{{$message}}</span>
             @enderror
@@ -26,7 +27,7 @@
             @enderror
         </div>
         <div class ="col-md-4 form-group">
-            <input type="checkbox" id="rememberMe" name="RememberMe">
+            <input type="checkbox" id="rememberMe" name="remember">
   			<label for="rememberMe">Remember Me</label>
         </div>
         <br>

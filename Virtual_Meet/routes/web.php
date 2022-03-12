@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('layouts.logreg');
+    return view('pages.login.login');
 });
 
 //----------------------------Login&Registration----------------------------//
@@ -30,22 +30,22 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //----------------------------User----------------------------//
 Route::get('/home/user', [UserController::class, 'home'])->name('homeUser');
-Route::get('/profile/user', [UserController::class, 'profile'])->name('profileUser');
+Route::get('/profile/user', [UserController::class, 'profile'])->name('profileUser')->middleware('ValidUser');
 Route::post('/profile/user/edit', [UserController::class, 'profileEdit'])->name('profileUserEdit');
-Route::get('/user/meeting/list', [UserController::class, 'meetingList'])->name('meetingList');
+Route::get('/user/meeting/list', [UserController::class, 'meetingList'])->name('meetingList')->middleware('ValidUser');
 
 //----------------------------Admin----------------------------//
 Route::get('/home/admin', [AdminController::class, 'home'])->name('homeAdmin');
-Route::get('/profile/admin', [AdminController::class, 'profile'])->name('profileAdmin');
+Route::get('/profile/admin', [AdminController::class, 'profile'])->name('profileAdmin')->middleware('ValidUser');
 Route::post('/profile/admin/edit', [AdminController::class, 'profileEdit'])->name('profileAdminEdit');
 
-Route::get('/admin/user/list', [AdminController::class, 'userList'])->name('userList');
-Route::get('/admin/meeting/list', [AdminController::class, 'meetingList'])->name('meetingList');
+Route::get('/admin/user/list', [AdminController::class, 'userList'])->name('userList')->middleware('ValidUser');
+Route::get('/admin/meeting/list', [AdminController::class, 'meetingList'])->name('meetingList')->middleware('ValidUser');
 
-Route::get('/admin/addUser', [AdminController::class, 'addUser'])->name('addUser');
+Route::get('/admin/addUser', [AdminController::class, 'addUser'])->middleware('ValidUser');
 Route::get('/admin/editUser/{id}', [AdminController::class, 'editUser']);
-Route::get('/admin/deleteUser/{id}', [AdminController::class, 'DeleteUser']);
+Route::get('/admin/deleteUser/{id}', [AdminController::class, 'deleteUser']);
 
-Route::get('/admin/addUser', [AdminController::class, 'addUser'])->name('addUser');
-Route::get('/admin/editUser/{id}', [AdminController::class, 'editUserSubmit'])->name('editUser');
-Route::get('/admin/deleteUser{id}', [AdminController::class, 'DeleteUserSubmit'])->name('deleteUser');
+Route::post('/admin/addUser', [AdminController::class, 'addUserSubmit'])->name('addUser');
+Route::post('/admin/editUser', [AdminController::class, 'editUserSubmit'])->name('editUser');
+Route::post('/admin/deleteUser', [AdminController::class, 'deleteUserSubmit'])->name('deleteUser');

@@ -1,13 +1,8 @@
-<html>
-    <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    </head>
-    <body>
-    <div class = "container">
-    <br><br>
+@extends('layouts.appAdmin')
+@section('contentAdmin')
+<br><br>
      <h1>Add User</h1>
-    <form action= "{{route('editUser')}}" class "form-group" method = "post" enctype="multipart/form-data">
+    <form action= "{{route('addUser')}}" class "form-group" method = "post" enctype="multipart/form-data">
         @csrf
         <div class="container">
             <div class="row ">
@@ -35,12 +30,10 @@
 
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-success">Add Student</button>
+                <button type="submit" class="btn btn-success">Add User</button>
             </div>
 
         </div>
         </div>
     </form>
-    </div>
-    </body>
-    </html>
+  @endsection

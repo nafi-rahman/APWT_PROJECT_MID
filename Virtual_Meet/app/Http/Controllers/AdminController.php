@@ -83,7 +83,7 @@ class AdminController extends Controller
             $request->image_path->move(public_path('images'), $imageName);
             $user->image_path=$imageName;
             $user->save();
-            return $this->list();
+            return $this->userList();
         }
         return "No File";
     }
