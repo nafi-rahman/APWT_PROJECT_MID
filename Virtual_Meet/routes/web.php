@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('layouts.logreg');
+    return view('layouts.landingpage');
 });
 
 //----------------------------Login&Registration----------------------------//
