@@ -1,37 +1,44 @@
 @extends('layouts.logReg')
-    @section('left-content')
+
+    @section('content')
 
 
-    <div class = "container">
     <br><br>
-    <h1>Login Form</h1>
+    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
     <form action= "{{route('login')}}" class "form-group" method = "post">
         {{csrf_field()}}
-        <div class ="col-md-4 form-group">
-            <span>User Name</span>
+        <div class =" form-group">
+            <span class="mb-2 text-uppercase">User Name</span>
             <input type="text" name="userName" value = "{{old('userName')}}" class = "form-control">
             @error('userName')
-                <span class = "text-danger">{{$message}}</span>
+            <span class="mb-2 text-uppercase">PASSWORD</span>
             @enderror
         </div>
-
-        <div class ="col-md-4 form-group">
+        <br>
+        <div class =" form-group">
             <span>Password</span>
             <input type="password" name="password" value = "{{old('password')}}" class = "form-control">
             @error('password')
                 <span class = "text-danger">{{$message}}</span>
             @enderror
         </div>
-        <div class ="col-md-4 form-group">
-            <input type="checkbox" id="rememberMe" name="RememberMe">
+        <br>
+        <div class =" form-group">
+            <input class="form-check-input" type="checkbox" id="rememberMe" name="RememberMe">
   			<label for="rememberMe">Remember Me</label>
         </div>
         <br>
-        @endsection
-        @section('bottom-content')
-        <input type = "submit" class="btn btn-primary" value = "Login">
-        Don't have an account? <a href="{{route('registration')}}">sign-up</a>
+
+
+
+        <input type = "submit" class="btn btn-outline-light btn-lg px-5" value = "Login">
+        <br>
+        <br>
+        <p class="mb-0">Don't have an account? <a href="{{route('registration')}}" class="text-white-50 fw-bold">Sign Up</a></p>
         <br><br>
         <a href="{{ route('homeUser') }}">Continue as guest</a>
-        @endsection
+
+
+
     </form>
+    @endsection
