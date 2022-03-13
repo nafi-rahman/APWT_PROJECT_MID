@@ -12,8 +12,8 @@
         {{csrf_field()}}
         <div class ="col-md-4 form-group">
             <span>User Name</span>
-            <input type="text" name="userName" <?php if(isset($_COOKIE['remember'])) {echo $_COOKIE['remember'];} ?>
-            value = "<?php if(isset($_COOKIE['remember'])) {echo $_COOKIE['remember'];} ?>" placeholder= "User Name" class = "form-control">
+            <input type="text" name="userName" <?php if(isset($_COOKIE['userName'])) {echo $_COOKIE['userName'];} ?>
+            value = "<?php if(isset($_COOKIE['userName'])) {echo $_COOKIE['userName'];} ?>" class = "form-control">
             @error('userName')
                 <span class = "text-danger">{{$message}}</span>
             @enderror
@@ -21,7 +21,7 @@
 
         <div class ="col-md-4 form-group">
             <span>Password</span>
-            <input type="password" name="password" value = "{{old('password')}}" class = "form-control">
+            <input type="password" name="password" class = "form-control">
             @error('password')
                 <span class = "text-danger">{{$message}}</span>
             @enderror

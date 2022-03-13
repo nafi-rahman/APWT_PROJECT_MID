@@ -17,8 +17,12 @@ class LoginController extends Controller
         $validate = $request->validate([
             'userName' => 'required',
             'password' => 'required'
-        ]);
-
+        ],
+        [
+            'userName.required'=>'Enter Your Name Please!',
+            'password.required'=>'Enter Your Password Please!',
+        ]
+    );
         $userName = $request->input('userName');
         $password = $request->input('password');
 
@@ -29,20 +33,24 @@ class LoginController extends Controller
         if($user && $user->type == "admin"){
             $request->session()->put('user', $user->id);
             if($request->remember){
-                setcookie('remember', $userName, time()+36000);
+                setcookie('userName', $userName, time()+36000);
+                setcookie('password', $password, time()+36000);
             }
             else{
-                setcookie('remember', "");
+                setcookie('userName', "");
+                setcookie('password', "");
             }
             return redirect()->route('homeAdmin');
         }
         elseif($user && $user->type == "user"){
             $request->session()->put('user', $user->id);
             if($request->remember){
-                setcookie('remember', $userName, time()+36000);
+                setcookie('userName', $userName, time()+36000);
+                setcookie('password', $password, time()+36000);
             }
             else{
-                setcookie('remember', "");
+                setcookie('userName', "");
+                setcookie('password', "");
             }
             return redirect()->route('homeUser');
         }
@@ -55,10 +63,15 @@ class LoginController extends Controller
             'name' => 'required',
             'password' => 'required',
             'email' => 'email',
+            'phone' => 'required',
+            'image_path' => 'required'
         ],
         [
-            'name.required'=>'Enter Your Name',
-            'password.required'=>'Enter Your Password',
+            'name.required'=>'Enter Your Name Please!',
+            'password.required'=>'Enter Your Password Please!',
+            'email.email'=>'Enter Your Email Please!',
+            'phone.required'=>'Enter Your Phone Number Please!',
+            'image_path.required'=>'Upload a Picture!!'
         ]
     );
         $user = new Accounts();

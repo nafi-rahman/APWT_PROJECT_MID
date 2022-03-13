@@ -1,4 +1,4 @@
 <a class = "btn btn-primary" href="{{route('homeUser')}}">Home</a>
 <a class = "btn btn-primary" href="{{route('profileUser')}}">Profile</a>
-<a class = "btn btn-primary" href="{{route('meetingList')}}">Meetings</a>
+<a class = "btn btn-primary" href="{{route('meetingListUser')}}">Meetings</a>
 <a class = "btn btn-secondary" href="{{route('logout')}}">Logout</a>

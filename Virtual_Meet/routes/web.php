@@ -32,7 +32,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home/user', [UserController::class, 'home'])->name('homeUser');
 Route::get('/profile/user', [UserController::class, 'profile'])->name('profileUser')->middleware('ValidUser');
 Route::post('/profile/user/edit', [UserController::class, 'profileEdit'])->name('profileUserEdit');
-Route::get('/user/meeting/list', [UserController::class, 'meetingList'])->name('meetingList')->middleware('ValidUser');
+Route::get('/user/meeting/list', [UserController::class, 'meetingList'])->name('meetingListUser')->middleware('ValidUser');
+Route::get('/user/meeting', [UserController::class, 'meeting'])->name('meeting');
 
 //----------------------------Admin----------------------------//
 Route::get('/home/admin', [AdminController::class, 'home'])->name('homeAdmin');
