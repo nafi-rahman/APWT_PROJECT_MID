@@ -17,21 +17,41 @@ class LoginController extends Controller
         $validate = $request->validate([
             'userName' => 'required',
             'password' => 'required'
-        ]);
-
+        ],
+        [
+            'userName.required'=>'Enter Your Name Please!',
+            'password.required'=>'Enter Your Password Please!',
+        ]
+    );
         $userName = $request->input('userName');
         $password = $request->input('password');
 
-        $user = Accounts::where('name', $request->userName)
-            ->where('password', $request->password)
+        $user = Accounts::where('name', $userName)
+            ->where('password', $password)
             ->first();
 
         if($user && $user->type == "admin"){
             $request->session()->put('user', $user->id);
+            if($request->remember){
+                setcookie('userName', $userName, time()+36000);
+                setcookie('password', $password, time()+36000);
+            }
+            else{
+                setcookie('userName', "");
+                setcookie('password', "");
+            }
             return redirect()->route('homeAdmin');
         }
         elseif($user && $user->type == "user"){
             $request->session()->put('user', $user->id);
+            if($request->remember){
+                setcookie('userName', $userName, time()+36000);
+                setcookie('password', $password, time()+36000);
+            }
+            else{
+                setcookie('userName', "");
+                setcookie('password', "");
+            }
             return redirect()->route('homeUser');
         }
         else{
@@ -43,10 +63,15 @@ class LoginController extends Controller
             'name' => 'required',
             'password' => 'required',
             'email' => 'email',
+            'phone' => 'required',
+            'image_path' => 'required'
         ],
         [
-            'name.required'=>'Enter Your Name',
-            'password.required'=>'Enter Your Password',
+            'name.required'=>'Enter Your Name Please!',
+            'password.required'=>'Enter Your Password Please!',
+            'email.email'=>'Enter Your Email Please!',
+            'phone.required'=>'Enter Your Phone Number Please!',
+            'image_path.required'=>'Upload a Picture!!'
         ]
     );
         $user = new Accounts();
@@ -66,6 +91,6 @@ class LoginController extends Controller
     }
     public function logout(){
         session()->forget('user');
-        return view('pages.login.login');
+        return redirect(route('login'));
     }
 }

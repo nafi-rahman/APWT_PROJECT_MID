@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Accounts;
+use App\Models\Meetings;
 use Illuminate\Notifications\Action;
 
 class AdminController extends Controller
@@ -66,10 +67,15 @@ class AdminController extends Controller
             'name' => 'required',
             'password' => 'required',
             'email' => 'email',
+            'phone' => 'required',
+            'image_path' => 'required'
         ],
         [
-            'name.required'=>'Enter Your Name',
-            'password.required'=>'Enter Your Password',
+            'name.required'=>'Enter Users Name Please!',
+            'password.required'=>'Enter Users Password Please!',
+            'email.email'=>'Enter Users Email Please!',
+            'phone.required'=>'Enter Users Phone Number Please!',
+            'image_path.required'=>'Upload Users Picture!!'
         ]
     );
         $user = new Accounts();
@@ -83,9 +89,13 @@ class AdminController extends Controller
             $request->image_path->move(public_path('images'), $imageName);
             $user->image_path=$imageName;
             $user->save();
-            return $this->list();
+            return $this->userList();
         }
         return "No File";
+    }
+    public function meetingList(){
+        $meets = Meetings::all();
+        return view('pages.user.meetingList')->with('meets', $meets);
     }
 
 }
