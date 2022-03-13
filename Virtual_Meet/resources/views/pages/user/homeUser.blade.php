@@ -1,3 +1,4 @@
+
 @extends('layouts.landingpage')
 @section('left')
     <div class="mainleft">
@@ -5,6 +6,13 @@
         <p class="text-black-60  mb-2 text-uppercase"> here you can easily create, join a meeting without even making an account</p>
 
     </div>
+
+@extends('layouts.appUser')
+@section('contentUser')
+    <h1>Welcome to the User Home Page</h1>
+    <ul><h2>Virtual Meeting</h2></ul>
+    <a class = "btn btn-primary" href="{{route('meeting')}}">Meeting</a>
+
 @endsection
 @section('right')
     <div id="right-img">
