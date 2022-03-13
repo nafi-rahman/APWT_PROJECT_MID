@@ -33,7 +33,7 @@
 
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-outline-light btn-lg px-5">Add Student</button>
+                <button type="submit" class="btn btn-outline-light btn-lg px-5">SUBMIT</button>
             </div>
 
 

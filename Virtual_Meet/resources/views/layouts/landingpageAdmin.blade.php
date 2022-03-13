@@ -9,18 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-    @section('usrnav')
-    @include('inc.topNavUser')
+    @section('nav')
+    @include('inc.topNavAdmin')
 @show
     <div class="container-fluid">
         <div class="row">
-            <div class="col" id="left">
-                @yield('left')
-            </div>
-            <div class="col" id="right">
-                @yield('right')
-
-            </div>
         </div>
     </div>
     <div>

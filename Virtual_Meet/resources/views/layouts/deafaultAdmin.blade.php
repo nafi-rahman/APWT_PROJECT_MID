@@ -9,22 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    @section('usrnav')
+    @section('nav')
     @include('inc.topNavUser')
 @show
     <div class="container-fluid">
         <div class="row">
-            <div class="col" id="left">
-                @yield('left')
-            </div>
-            <div class="col" id="right">
-                @yield('right')
-
-            </div>
         </div>
     </div>
-    <div>
-        @yield('bottom')
+    <div id="section1">
+        @yield('section1')
+    </div>
+    <div id="section2">
+        @yield('section2')
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
