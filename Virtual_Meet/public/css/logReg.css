@@ -4,14 +4,18 @@
     background: #6a11cb;
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    background: -webkit-linear-gradient(to right, rgba(253, 253, 211, 99), rgba(230, 179, 215, 90));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    background: linear-gradient(to right, rgba(255, 246, 237, 100), rgba(253, 234, 212, 100))
 
 
 }
 #link {
     text-decoration: none;
-    color: #2B69FA;
+    color: rgba(255, 246, 237, 100);
+}
+#card {
+    background-image: url("https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80");
+    border: 0px;
 }
